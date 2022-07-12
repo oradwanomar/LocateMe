@@ -6,12 +6,24 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let initLocation = CLLocation(latitude: 24.69371, longitude: 46.723596)
+        setStartingLocation(location: initLocation, distance: 10000)
+    }
+    
+    func setStartingLocation(location: CLLocation,distance: CLLocationDistance){
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
+        mapView.setRegion(region, animated: true)
+        mapView.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
+        
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 100)
+        mapView.setCameraZoomRange(zoomRange, animated: true)
     }
 
 
