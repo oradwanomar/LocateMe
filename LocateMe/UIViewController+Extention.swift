@@ -15,6 +15,7 @@ extension UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     func settingsAlert(){
         let alert = UIAlertController(title: "Enable Location",
                                       message: "Please Enable Location Service",
