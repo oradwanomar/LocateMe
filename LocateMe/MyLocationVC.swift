@@ -32,7 +32,6 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
     }
     
-
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
