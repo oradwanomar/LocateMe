@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         addAnnotation()
     }
     
+    
     func setStartingLocation(location: CLLocation,distance: CLLocationDistance){
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
         mapView.setRegion(region, animated: true)
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 1000)
         mapView.setCameraZoomRange(zoomRange, animated: true)
     }
+    
     
     func addAnnotation(){
         let pin = MKPointAnnotation()
