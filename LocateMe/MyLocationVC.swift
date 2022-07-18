@@ -28,9 +28,9 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-//    func openSettings(alert: UIAlertAction!) {
-//        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-//    }
+    func openSettings(alert: UIAlertAction!) {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+    }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
