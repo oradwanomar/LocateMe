@@ -11,6 +11,7 @@ import MapKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let initLocation = CLLocation(latitude: 24.69371, longitude: 46.723596)
