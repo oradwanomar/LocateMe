@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     }
     
     
-    
     func addAnnotation(){
         let pin = MKPointAnnotation()
         pin.coordinate = CLLocationCoordinate2D(latitude: 24.69371, longitude: 46.723596)
