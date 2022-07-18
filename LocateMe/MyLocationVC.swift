@@ -10,10 +10,14 @@ import MapKit
 import CoreLocation
 
 class MyLocationVC: UIViewController, CLLocationManagerDelegate {
+    
+    //MARK: - Properities
 
     @IBOutlet weak var mapView: MKMapView!
     
     var locationManager = CLLocationManager()
+    
+    //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
