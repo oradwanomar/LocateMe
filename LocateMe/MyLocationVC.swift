@@ -28,7 +28,6 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             print("Location: \(location)")
