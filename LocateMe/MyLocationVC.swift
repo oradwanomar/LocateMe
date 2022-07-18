@@ -28,11 +28,6 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func openSettings(alert: UIAlertAction!) {
-        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-    }
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             print("Location: \(location)")
@@ -103,27 +98,6 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
             break
         }
         
-    }
-    
-    func showAlert(messege: String){
-        let alert = UIAlertController(title: "Alert", message: messege, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func settingsAlert(){
-        let alert = UIAlertController(title: "Enable Location",
-                                      message: "Please Enable Location Service",
-                                      preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Settings",
-                                      style: UIAlertAction.Style.default,
-                                      handler: openSettings))
-        alert.addAction(UIAlertAction(title: "Cancel",
-                                      style: UIAlertAction.Style.default,
-                                      handler: nil))
-
-        self.present(alert, animated: true, completion: nil)
     }
 
 }
