@@ -14,7 +14,6 @@ extension UIViewController{
         alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
     
     func settingsAlert(){
         let alert = UIAlertController(title: "Enable Location",
