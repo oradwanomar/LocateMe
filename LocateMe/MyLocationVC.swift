@@ -40,6 +40,7 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    
     func zoomToUserLocation(location: CLLocation){
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
         mapView.setRegion(region, animated: true)
@@ -75,7 +76,6 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
             print("Default")
             break
         }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -102,7 +102,6 @@ class MyLocationVC: UIViewController, CLLocationManagerDelegate {
             print("Default")
             break
         }
-        
     }
 
 }

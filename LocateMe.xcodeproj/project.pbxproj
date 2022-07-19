@@ -15,6 +15,7 @@
 		85232363287DC01E00ED82EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85232361287DC01E00ED82EA /* LaunchScreen.storyboard */; };
 		85A2E64A288403A500F77482 /* MyLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2E649288403A500F77482 /* MyLocationVC.swift */; };
 		85A2E64C28853C2000F77482 /* UIViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */; };
+		85C46FD02886502D007AB88A /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FCF2886502D007AB88A /* TripsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		85232364287DC01E00ED82EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85A2E649288403A500F77482 /* MyLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationVC.swift; sourceTree = "<group>"; };
 		85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extention.swift"; sourceTree = "<group>"; };
+		85C46FCF2886502D007AB88A /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,50 @@
 		85232355287DC01D00ED82EA /* LocateMe */ = {
 			isa = PBXGroup;
 			children = (
-				85232356287DC01D00ED82EA /* AppDelegate.swift */,
-				85232358287DC01D00ED82EA /* SceneDelegate.swift */,
+				85C46FCE28864FAF007AB88A /* Utilities */,
+				85C46FCD28864FA5007AB88A /* Extentions */,
+				85C46FCC28864F8A007AB88A /* View */,
+				85C46FCB28864F7E007AB88A /* Model */,
 				8523235A287DC01D00ED82EA /* ViewController.swift */,
 				8523235C287DC01D00ED82EA /* Main.storyboard */,
-				8523235F287DC01E00ED82EA /* Assets.xcassets */,
-				85232361287DC01E00ED82EA /* LaunchScreen.storyboard */,
-				85232364287DC01E00ED82EA /* Info.plist */,
 				85A2E649288403A500F77482 /* MyLocationVC.swift */,
-				85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */,
+				85C46FCF2886502D007AB88A /* TripsTableViewController.swift */,
 			);
 			path = LocateMe;
+			sourceTree = "<group>";
+		};
+		85C46FCB28864F7E007AB88A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85C46FCC28864F8A007AB88A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85C46FCD28864FA5007AB88A /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		85C46FCE28864FAF007AB88A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				85232356287DC01D00ED82EA /* AppDelegate.swift */,
+				85232358287DC01D00ED82EA /* SceneDelegate.swift */,
+				8523235F287DC01E00ED82EA /* Assets.xcassets */,
+				85232364287DC01E00ED82EA /* Info.plist */,
+				85232361287DC01E00ED82EA /* LaunchScreen.storyboard */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C46FD02886502D007AB88A /* TripsTableViewController.swift in Sources */,
 				85A2E64A288403A500F77482 /* MyLocationVC.swift in Sources */,
 				8523235B287DC01D00ED82EA /* ViewController.swift in Sources */,
 				85232357287DC01D00ED82EA /* AppDelegate.swift in Sources */,
@@ -299,7 +335,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D9ACXVN2BM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LocateMe/Info.plist;
+				INFOPLIST_FILE = LocateMe/Utilities/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -329,7 +365,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D9ACXVN2BM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LocateMe/Info.plist;
+				INFOPLIST_FILE = LocateMe/Utilities/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
