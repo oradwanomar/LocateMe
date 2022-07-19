@@ -11,9 +11,7 @@ import MapKit
 class DirectionsViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    
-    var locationManager = CLLocationManager()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +19,6 @@ class DirectionsViewController: UIViewController {
         let end = CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.03121860)
         mapView.delegate = self
         drawRoadDirections(startingLoc: start, destinationLoc: end)
-//        let initLocation = CLLocation(latitude: 24.69371, longitude: 46.723596)
         setStartingLocation(location: start, distance: 10000)
     }
     
@@ -54,14 +51,16 @@ class DirectionsViewController: UIViewController {
         }
     }
     
+    
     func setStartingLocation(location: CLLocationCoordinate2D,distance: CLLocationDistance){
         let region = MKCoordinateRegion(center: location, latitudinalMeters: distance, longitudinalMeters: distance)
         mapView.setRegion(region, animated: true)
     }
 
-
 }
 
+
+// MARK: - MKMapViewDelegate
 
 extension DirectionsViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

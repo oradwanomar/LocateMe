@@ -17,7 +17,18 @@
 		85A2E64C28853C2000F77482 /* UIViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */; };
 		85C46FD02886502D007AB88A /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FCF2886502D007AB88A /* TripsTableViewController.swift */; };
 		85C46FD22886BA06007AB88A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FD12886BA06007AB88A /* Trip.swift */; };
+		85C46FDB2886E656007AB88A /* LocateMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FDA2886E656007AB88A /* LocateMeTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85C46FDC2886E656007AB88A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8523234B287DC01C00ED82EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85232352287DC01C00ED82EA;
+			remoteInfo = LocateMe;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		85232353287DC01D00ED82EA /* LocateMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocateMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,10 +43,19 @@
 		85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extention.swift"; sourceTree = "<group>"; };
 		85C46FCF2886502D007AB88A /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		85C46FD12886BA06007AB88A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		85C46FD82886E656007AB88A /* LocateMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocateMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		85C46FDA2886E656007AB88A /* LocateMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateMeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		85232350287DC01C00ED82EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85C46FD52886E656007AB88A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				85232355287DC01D00ED82EA /* LocateMe */,
+				85C46FD92886E656007AB88A /* LocateMeTests */,
 				85232354287DC01D00ED82EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				85232353287DC01D00ED82EA /* LocateMe.app */,
+				85C46FD82886E656007AB88A /* LocateMeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,6 +141,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		85C46FD92886E656007AB88A /* LocateMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				85C46FDA2886E656007AB88A /* LocateMeTests.swift */,
+			);
+			path = LocateMeTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +169,24 @@
 			productReference = 85232353287DC01D00ED82EA /* LocateMe.app */;
 			productType = "com.apple.product-type.application";
 		};
+		85C46FD72886E656007AB88A /* LocateMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85C46FDE2886E656007AB88A /* Build configuration list for PBXNativeTarget "LocateMeTests" */;
+			buildPhases = (
+				85C46FD42886E656007AB88A /* Sources */,
+				85C46FD52886E656007AB88A /* Frameworks */,
+				85C46FD62886E656007AB88A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85C46FDD2886E656007AB88A /* PBXTargetDependency */,
+			);
+			name = LocateMeTests;
+			productName = LocateMeTests;
+			productReference = 85C46FD82886E656007AB88A /* LocateMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +199,10 @@
 				TargetAttributes = {
 					85232352287DC01C00ED82EA = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					85C46FD72886E656007AB88A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 85232352287DC01C00ED82EA;
 					};
 				};
 			};
@@ -168,6 +220,7 @@
 			projectRoot = "";
 			targets = (
 				85232352287DC01C00ED82EA /* LocateMe */,
+				85C46FD72886E656007AB88A /* LocateMeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -180,6 +233,13 @@
 				85232363287DC01E00ED82EA /* LaunchScreen.storyboard in Resources */,
 				85232360287DC01E00ED82EA /* Assets.xcassets in Resources */,
 				8523235E287DC01D00ED82EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85C46FD62886E656007AB88A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +260,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		85C46FD42886E656007AB88A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85C46FDB2886E656007AB88A /* LocateMeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		85C46FDD2886E656007AB88A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85232352287DC01C00ED82EA /* LocateMe */;
+			targetProxy = 85C46FDC2886E656007AB88A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8523235C287DC01D00ED82EA /* Main.storyboard */ = {
@@ -398,6 +474,42 @@
 			};
 			name = Release;
 		};
+		85C46FDF2886E656007AB88A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D9ACXVN2BM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "omar-ahmed.LocateMeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocateMe.app/LocateMe";
+			};
+			name = Debug;
+		};
+		85C46FE02886E656007AB88A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D9ACXVN2BM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "omar-ahmed.LocateMeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocateMe.app/LocateMe";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +527,15 @@
 			buildConfigurations = (
 				85232368287DC01E00ED82EA /* Debug */,
 				85232369287DC01E00ED82EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85C46FDE2886E656007AB88A /* Build configuration list for PBXNativeTarget "LocateMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85C46FDF2886E656007AB88A /* Debug */,
+				85C46FE02886E656007AB88A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
