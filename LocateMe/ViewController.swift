@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         addAnnotation()
     }
     
-    
     func setStartingLocation(location: CLLocation,distance: CLLocationDistance){
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
         mapView.setRegion(region, animated: true)

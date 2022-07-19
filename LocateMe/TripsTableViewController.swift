@@ -8,9 +8,17 @@
 import UIKit
 
 class TripsTableViewController: UITableViewController {
+    
+    var trips: [Trip] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    
+    @IBAction func addTripNavigator(_ sender: Any) {
+        let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "mapVC") as! MyLocationVC
+        self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
 }
@@ -32,9 +40,17 @@ extension TripsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = "Trip"
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Trips"
     }
 }
 
