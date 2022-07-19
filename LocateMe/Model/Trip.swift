@@ -8,8 +8,8 @@
 import Foundation
 
 struct Trip{
-    let start: Location
-    let end: Location
+    var start: Location
+    var end: Location
 }
 
 struct Location{

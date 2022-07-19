@@ -30,8 +30,8 @@ class MyLocationVC: UIViewController{
     
     var isStarted = false
     
-    var startLocation: CLLocation?
-    
+    var startTrip: Location?
+        
     var lastLocation: CLLocation?
     
     var trackArray: [CLLocation] = []
@@ -58,15 +58,14 @@ class MyLocationVC: UIViewController{
     @IBAction func makeTripAction(_ sender: Any) {
         isStarted.toggle()
         
-        let startTrip = Location(longitude: trackArray.first!.coordinate.longitude, latitude: trackArray.first!.coordinate.latitude)
-        let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
-        let trip = Trip(start: startTrip, end: endTrip)
-        
         if isStarted{
             locationManager.startUpdatingLocation()
+            startTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
             configureView()
         }else{
             locationManager.stopUpdatingLocation()
+            let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
+            let trip = Trip(start: startTrip!, end: endTrip)
             let region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
             configureView()
@@ -143,13 +142,12 @@ class MyLocationVC: UIViewController{
 extension MyLocationVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        startLocation = locations.first
         if let location = locations.last {
             print("Location: \(location)")
             zoomToUserLocation(location: location)
+            trackArray.append(location)
             lastLocation = location
         }
-        trackArray = locations
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
