@@ -8,7 +8,6 @@
 import Foundation
 
 struct Trip{
-    let tripNumber: Int
     let start: Location
     let end: Location
 }

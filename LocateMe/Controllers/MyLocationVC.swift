@@ -34,16 +34,10 @@ class MyLocationVC: UIViewController{
     
     var lastLocation: CLLocation?
     
-    var startTrip: Location?
-
-    var endTrip: Location?
-    
     var trackArray: [CLLocation] = []
     
     weak var delegate: AddTripDelegate?
-    
-    var tripNum = 1
-    
+        
     //MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -66,24 +60,22 @@ class MyLocationVC: UIViewController{
         
         let startTrip = Location(longitude: trackArray.first!.coordinate.longitude, latitude: trackArray.first!.coordinate.latitude)
         let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
-        let trip = Trip(tripNumber: tripNum, start: startTrip, end: endTrip)
+        let trip = Trip(start: startTrip, end: endTrip)
         
         if isStarted{
             locationManager.startUpdatingLocation()
-            let region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 150, longitudinalMeters: 150)
-            mapView.setRegion(region, animated: true)
             configureView()
         }else{
             locationManager.stopUpdatingLocation()
             let region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
             configureView()
-//            delegate?.addTrip(trip: trip)
+            delegate?.addTrip(trip: trip)
             print(trip)
         }
     }
     
-    private func configureView(){
+    func configureView(){
         if isStarted{
             recordLabel.text = "Recording trip..."
             startTripButton.setTitle("Stop", for: .normal)
@@ -130,6 +122,7 @@ class MyLocationVC: UIViewController{
 //            showAlert(messege: "Please Authorise access to location")
             break
         case .authorizedAlways:
+            locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
             break
         case .authorizedWhenInUse:
@@ -165,6 +158,7 @@ extension MyLocationVC: CLLocationManagerDelegate {
             settingsAlert()
             break
         case .authorizedAlways:
+            locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
             break
         case .authorizedWhenInUse:

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		85232357287DC01D00ED82EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85232356287DC01D00ED82EA /* AppDelegate.swift */; };
 		85232359287DC01D00ED82EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85232358287DC01D00ED82EA /* SceneDelegate.swift */; };
-		8523235B287DC01D00ED82EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523235A287DC01D00ED82EA /* ViewController.swift */; };
+		8523235B287DC01D00ED82EA /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523235A287DC01D00ED82EA /* DirectionsViewController.swift */; };
 		8523235E287DC01D00ED82EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8523235C287DC01D00ED82EA /* Main.storyboard */; };
 		85232360287DC01E00ED82EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8523235F287DC01E00ED82EA /* Assets.xcassets */; };
 		85232363287DC01E00ED82EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85232361287DC01E00ED82EA /* LaunchScreen.storyboard */; };
@@ -23,7 +23,7 @@
 		85232353287DC01D00ED82EA /* LocateMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocateMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85232356287DC01D00ED82EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85232358287DC01D00ED82EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8523235A287DC01D00ED82EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8523235A287DC01D00ED82EA /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		8523235D287DC01D00ED82EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8523235F287DC01E00ED82EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85232362287DC01E00ED82EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,12 +66,9 @@
 			children = (
 				85C46FCE28864FAF007AB88A /* Utilities */,
 				85C46FCD28864FA5007AB88A /* Extentions */,
-				85C46FCC28864F8A007AB88A /* View */,
 				85C46FCB28864F7E007AB88A /* Model */,
-				8523235A287DC01D00ED82EA /* ViewController.swift */,
-				8523235C287DC01D00ED82EA /* Main.storyboard */,
-				85A2E649288403A500F77482 /* MyLocationVC.swift */,
-				85C46FCF2886502D007AB88A /* TripsTableViewController.swift */,
+				85C46FCC28864F8A007AB88A /* View */,
+				85C46FD32886E5C3007AB88A /* Controllers */,
 			);
 			path = LocateMe;
 			sourceTree = "<group>";
@@ -87,6 +84,7 @@
 		85C46FCC28864F8A007AB88A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8523235C287DC01D00ED82EA /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,6 +107,16 @@
 				85232361287DC01E00ED82EA /* LaunchScreen.storyboard */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		85C46FD32886E5C3007AB88A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				85A2E649288403A500F77482 /* MyLocationVC.swift */,
+				8523235A287DC01D00ED82EA /* DirectionsViewController.swift */,
+				85C46FCF2886502D007AB88A /* TripsTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +192,7 @@
 			files = (
 				85C46FD02886502D007AB88A /* TripsTableViewController.swift in Sources */,
 				85A2E64A288403A500F77482 /* MyLocationVC.swift in Sources */,
-				8523235B287DC01D00ED82EA /* ViewController.swift in Sources */,
+				8523235B287DC01D00ED82EA /* DirectionsViewController.swift in Sources */,
 				85232357287DC01D00ED82EA /* AppDelegate.swift in Sources */,
 				85A2E64C28853C2000F77482 /* UIViewController+Extention.swift in Sources */,
 				85C46FD22886BA06007AB88A /* Trip.swift in Sources */,
