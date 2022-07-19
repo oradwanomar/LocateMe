@@ -34,6 +34,12 @@ class MyLocationVC: UIViewController{
     
     var lastLocation: CLLocation?
     
+    var startTrip: Location?
+
+    var endTrip: Location?
+    
+    var trackArray: [CLLocation] = []
+    
     weak var delegate: AddTripDelegate?
     
     var tripNum = 1
@@ -58,9 +64,13 @@ class MyLocationVC: UIViewController{
     @IBAction func makeTripAction(_ sender: Any) {
         isStarted.toggle()
         
+        let startTrip = Location(longitude: trackArray.first!.coordinate.longitude, latitude: trackArray.first!.coordinate.latitude)
+        let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
+        let trip = Trip(tripNumber: tripNum, start: startTrip, end: endTrip)
+        
         if isStarted{
             locationManager.startUpdatingLocation()
-            let region = MKCoordinateRegion(center: startLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 150, longitudinalMeters: 150)
+            let region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 150, longitudinalMeters: 150)
             mapView.setRegion(region, animated: true)
             configureView()
         }else{
@@ -68,6 +78,8 @@ class MyLocationVC: UIViewController{
             let region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
             configureView()
+//            delegate?.addTrip(trip: trip)
+            print(trip)
         }
     }
     
@@ -79,13 +91,6 @@ class MyLocationVC: UIViewController{
             recordLabel.text = "Begin record"
             startTripButton.setTitle("Start", for: .normal)
         }
-    }
-    
-    private func createTrip(){
-        let startTrip = Location(longitude: (startLocation?.coordinate.longitude)!, latitude: (startLocation?.coordinate.latitude)!)
-        let endTrip = Location(longitude: (lastLocation?.coordinate.longitude)!, latitude: (lastLocation?.coordinate.latitude)!)
-        let trip = Trip(tripNumber: tripNum, start: startTrip, end: endTrip)
-        delegate?.addTrip(trip: trip)
     }
     
     func configureLocationManager(){
@@ -151,6 +156,7 @@ extension MyLocationVC: CLLocationManagerDelegate {
             zoomToUserLocation(location: location)
             lastLocation = location
         }
+        trackArray = locations
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
