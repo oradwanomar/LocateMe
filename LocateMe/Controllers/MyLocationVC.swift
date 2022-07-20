@@ -71,7 +71,7 @@ class MyLocationVC: UIViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-    } 
+    }  
     
     //MARK: - IBActions
 
