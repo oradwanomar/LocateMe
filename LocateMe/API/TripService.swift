@@ -20,6 +20,8 @@ struct TripService{
         Firestore.firestore().collection("trips").addDocument(data: tripData, completion: completion)
     }
     
-    
+    static func fetchTrips(completion: @escaping ([Trip]) -> ()){
+        
+    }
     
 }

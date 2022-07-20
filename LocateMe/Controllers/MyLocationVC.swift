@@ -90,11 +90,9 @@ class MyLocationVC: UIViewController{
     }
     
 }
-
 //MARK: - OBJC Functions
 
 extension MyLocationVC{
-    
     @objc func fireTimer(){
         if locationManager.location!.speed <= 0.0 {
             timerView.isHidden = false
