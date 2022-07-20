@@ -64,7 +64,7 @@ extension TripsTableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-}
+} 
 
 //MARK: - Add Trip Protocol
 
