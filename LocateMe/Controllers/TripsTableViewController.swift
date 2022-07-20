@@ -29,12 +29,10 @@ class TripsTableViewController: UITableViewController {
 extension TripsTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return trips.count
     }
 
@@ -61,9 +59,11 @@ extension TripsTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let directionVC = self.storyboard?.instantiateViewController(withIdentifier: "DirectionsViewController") as! DirectionsViewController
+        directionVC.trip = trips[indexPath.row]
         self.navigationController?.pushViewController(directionVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
 }
 
 //MARK: - Add Trip Protocol

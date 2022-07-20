@@ -13,6 +13,6 @@ struct Trip{
 }
 
 struct Location{
-    let longitude: Double
-    let latitude: Double
+    var longitude: Double
+    var latitude: Double
 }

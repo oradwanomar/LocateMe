@@ -92,6 +92,24 @@
                                     <constraint firstAttribute="height" constant="115" id="eXu-ou-Adk"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSD-qG-91S">
+                                <rect key="frame" x="312" y="788" width="70" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYY-KP-u5Y">
+                                        <rect key="frame" x="13" y="24.5" width="44.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.58081901069999997" green="0.088427625600000004" blue="0.31863921880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99942332566386527" green="0.99942332566386527" blue="0.99942332566386527" alpha="0.65530031722112991" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="ELb-57-bsK"/>
+                                    <constraint firstItem="OYY-KP-u5Y" firstAttribute="centerY" secondItem="uSD-qG-91S" secondAttribute="centerY" id="gBB-Aa-BCw"/>
+                                    <constraint firstItem="OYY-KP-u5Y" firstAttribute="centerX" secondItem="uSD-qG-91S" secondAttribute="centerX" id="l8T-FV-YWv"/>
+                                    <constraint firstAttribute="height" constant="70" id="lOw-Xe-fQp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="597-nB-vyK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -101,19 +119,23 @@
                             <constraint firstItem="CI6-Uw-RGs" firstAttribute="top" secondItem="quH-X9-7dJ" secondAttribute="top" id="79d-57-71b"/>
                             <constraint firstItem="597-nB-vyK" firstAttribute="bottom" secondItem="8AX-3c-D6L" secondAttribute="bottom" constant="-34" id="BHy-w7-lIC"/>
                             <constraint firstItem="597-nB-vyK" firstAttribute="trailing" secondItem="8AX-3c-D6L" secondAttribute="trailing" id="OIs-fw-sr5"/>
+                            <constraint firstItem="597-nB-vyK" firstAttribute="trailing" secondItem="uSD-qG-91S" secondAttribute="trailing" constant="32" id="RPu-6h-bnh"/>
                             <constraint firstItem="CI6-Uw-RGs" firstAttribute="trailing" secondItem="597-nB-vyK" secondAttribute="trailing" id="TZh-u8-STc"/>
                             <constraint firstItem="8AX-3c-D6L" firstAttribute="leading" secondItem="597-nB-vyK" secondAttribute="leading" id="Ye5-xX-b1A"/>
+                            <constraint firstItem="597-nB-vyK" firstAttribute="bottom" secondItem="uSD-qG-91S" secondAttribute="bottom" constant="4" id="ulI-F6-IZd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="8AX-3c-D6L" id="TbO-XF-WOI"/>
                         <outlet property="recordLabel" destination="HCE-Lf-l2h" id="I3n-wK-rWt"/>
                         <outlet property="startTripButton" destination="Kfa-s4-G8M" id="3I3-NZ-dkU"/>
+                        <outlet property="timerLabel" destination="OYY-KP-u5Y" id="a38-mE-nap"/>
+                        <outlet property="timerView" destination="uSD-qG-91S" id="08z-ev-uSm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrS-yN-I1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3578" y="-253"/>
+            <point key="canvasLocation" x="3576.811594202899" y="-253.125"/>
         </scene>
         <!--Your Trips-->
         <scene sceneID="KBV-PH-chu">

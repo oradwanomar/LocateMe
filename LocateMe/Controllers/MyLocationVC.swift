@@ -18,13 +18,20 @@ protocol AddTripDelegate: AnyObject {
 
 class MyLocationVC: UIViewController{
     
-    //MARK: - Properities
+    //MARK: - Outlets
 
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var startTripButton: UIButton!
     
     @IBOutlet weak var recordLabel: UILabel!
+    
+    @IBOutlet weak var timerView: UIView!
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    
+    //MARK: - Properities
+
     
     var locationManager = CLLocationManager()
     
@@ -34,7 +41,15 @@ class MyLocationVC: UIViewController{
         
     var lastLocation: CLLocation?
     
+    var currentSpeed: Double?
+    
     var trackArray: [CLLocation] = []
+    
+    var timer: Timer?
+    
+    var stopSeconds = 0
+    
+    var timerCounter = 11
     
     weak var delegate: AddTripDelegate?
         
@@ -43,17 +58,23 @@ class MyLocationVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         startTripButton.layer.cornerRadius = 5
+        timerView.layer.cornerRadius = 35
+        timerLabel.text = "\(timerCounter)"
         configureLocationManager()
         configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        timerView.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
+    
+    //MARK: - IBActions
+
     
     @IBAction func makeTripAction(_ sender: Any) {
         isStarted.toggle()
@@ -62,16 +83,60 @@ class MyLocationVC: UIViewController{
             locationManager.startUpdatingLocation()
             startTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
             configureView()
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         }else{
-            locationManager.stopUpdatingLocation()
-            let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
-            let trip = Trip(start: startTrip!, end: endTrip)
-            let region = MKCoordinateRegion(center: lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 23.3424, longitude: 26.3242), latitudinalMeters: 500, longitudinalMeters: 500)
-            mapView.setRegion(region, animated: true)
-            configureView()
-            delegate?.addTrip(trip: trip)
-            print(trip)
+           endAndSaveTrip()
         }
+    }
+    
+}
+
+//MARK: - OBJC Functions
+
+extension MyLocationVC{
+    
+    @objc func fireTimer(){
+        if locationManager.location!.speed <= 0.0 {
+            timerView.isHidden = false
+            stopSeconds += 1
+            timerLabel.text = "\(timerCounter - stopSeconds)"
+
+            if stopSeconds == 10 {
+                isStarted = false
+                endAndSaveTrip()
+                recordLabel.text = "Trip is stopped"
+            }
+        }else{
+            if stopSeconds < 10 && stopSeconds > 0{
+                recordLabel.text = "Still recording..."
+                startTripButton.setTitle("Stop", for: .normal)
+                stopSeconds = 0
+            }
+        }
+    }
+}
+
+//MARK: - Helper Functions
+
+extension MyLocationVC{
+    
+    func endAndSaveTrip(){
+        locationManager.stopUpdatingLocation()
+        timer?.invalidate()
+        stopSeconds = 0
+        timerView.isHidden = true
+        
+        let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
+        let trip = Trip(start: startTrip!, end: endTrip)
+        delegate?.addTrip(trip: trip)
+        
+        zoomToUserLocation(location: lastLocation!, lat: 700, long: 700)
+        
+        
+        configureView()
+        
+        trackArray.removeAll()
+        locationManager.startUpdatingLocation()
     }
     
     func configureView(){
@@ -88,7 +153,6 @@ class MyLocationVC: UIViewController{
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.allowsBackgroundLocationUpdates = true
-        
         if isLocationServiceEnabled(){
             checkAuthorization()
         }else{
@@ -97,8 +161,8 @@ class MyLocationVC: UIViewController{
     }
     
     
-    func zoomToUserLocation(location: CLLocation){
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+    func zoomToUserLocation(location: CLLocation,lat: Double,long: Double){
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: lat, longitudinalMeters: long)
         mapView.setRegion(region, animated: true)
     }
     
@@ -118,7 +182,6 @@ class MyLocationVC: UIViewController{
             break
         case .denied:
             settingsAlert()
-//            showAlert(messege: "Please Authorise access to location")
             break
         case .authorizedAlways:
             locationManager.startUpdatingLocation()
@@ -134,7 +197,6 @@ class MyLocationVC: UIViewController{
             break
         }
     }
-    
 }
 
 // MARK: - Extention to CLLocationManagerDelegate
@@ -144,7 +206,7 @@ extension MyLocationVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             print("Location: \(location)")
-            zoomToUserLocation(location: location)
+            zoomToUserLocation(location: location,lat: 500,long: 500)
             trackArray.append(location)
             lastLocation = location
         }
