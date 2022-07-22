@@ -82,12 +82,3 @@ extension TripsTableViewController {
     }
     
 } 
-
-//MARK: - Add Trip Protocol
-
-extension TripsTableViewController: AddTripDelegate{
-    func addTrip(trip: Trip) {
-//        trips.append(trip)
-//        self.tableView.reloadData()
-    }
-}

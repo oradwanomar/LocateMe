@@ -8,12 +8,9 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 // MARK: - Add trip protocol
-
-protocol AddTripDelegate: AnyObject {
-    func addTrip(trip: Trip)
-}
 
 
 class MyLocationVC: UIViewController{
@@ -50,9 +47,7 @@ class MyLocationVC: UIViewController{
     var stopSeconds = 0
     
     var timerCounter = 11
-    
-    weak var delegate: AddTripDelegate?
-        
+            
     //MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -127,7 +122,7 @@ extension MyLocationVC{
         timerView.isHidden = true
         
         let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
-        let trip = Trip(start: startTrip!, end: endTrip)
+        let trip = Trip(start: startTrip!, end: endTrip, timeStamp: Timestamp(date: .now))
         uploadTripToFirebase(trip: trip)
 //        delegate?.addTrip(trip: trip)
                 

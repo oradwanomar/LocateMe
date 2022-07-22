@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
 struct Trip{
     var start: Location
     var end: Location
+    let timeStamp: Timestamp
 }
 
 struct Location{
