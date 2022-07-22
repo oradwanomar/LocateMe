@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TripsTableViewController: UITableViewController {
     
@@ -13,15 +14,31 @@ class TripsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTrips()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchTrips()
+    }
     
     @IBAction func addTripNavigator(_ sender: Any) {
         let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "mapVC") as! MyLocationVC
-        mapVC.delegate = self
+//        mapVC.delegate = self
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
+}
+
+// MARK: - Helper
+
+extension TripsTableViewController {
+    func fetchTrips(){
+        TripService.fetchTrips { trips in
+            self.trips = trips
+            self.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - Table view data source
@@ -70,7 +87,7 @@ extension TripsTableViewController {
 
 extension TripsTableViewController: AddTripDelegate{
     func addTrip(trip: Trip) {
-        trips.append(trip)
-        self.tableView.reloadData()
+//        trips.append(trip)
+//        self.tableView.reloadData()
     }
 }

@@ -20,15 +20,15 @@ class MyLocationVC: UIViewController{
     
     //MARK: - Outlets
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private(set) weak var mapView: MKMapView!
     
-    @IBOutlet weak var startTripButton: UIButton!
+    @IBOutlet private(set) weak var startTripButton: UIButton!
     
-    @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet private(set) weak var recordLabel: UILabel!
     
-    @IBOutlet weak var timerView: UIView!
+    @IBOutlet private(set) weak var timerView: UIView!
     
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet private(set) weak var timerLabel: UILabel!
     
     //MARK: - Properities
 
@@ -86,6 +86,7 @@ class MyLocationVC: UIViewController{
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         }else{
            endAndSaveTrip()
+           configureView()
         }
     }
     
@@ -127,15 +128,19 @@ extension MyLocationVC{
         
         let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
         let trip = Trip(start: startTrip!, end: endTrip)
-        delegate?.addTrip(trip: trip)
-        
-        zoomToUserLocation(location: lastLocation!, lat: 700, long: 700)
-        
-        
-        configureView()
-        
+        uploadTripToFirebase(trip: trip)
+//        delegate?.addTrip(trip: trip)
+                
         trackArray.removeAll()
         locationManager.startUpdatingLocation()
+    }
+    
+    func uploadTripToFirebase(trip: Trip){
+        TripService.uploadTrip(trip: trip) { error in
+            if let error = error {
+                print("Error on upload trip: \(error.localizedDescription)")
+            }
+        }
     }
     
     func configureView(){

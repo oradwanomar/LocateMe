@@ -10,13 +10,12 @@ import MapKit
 
 class DirectionsViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private(set) weak var mapView: MKMapView!
     
     var trip: Trip?
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let start = CLLocationCoordinate2D(latitude: (trip?.start.latitude)!, longitude: (trip?.start.longitude)!)
         let end = CLLocationCoordinate2D(latitude: (trip?.end.latitude)!, longitude: (trip?.end.longitude)!)
         mapView.delegate = self
@@ -25,7 +24,6 @@ class DirectionsViewController: UIViewController {
         addAnnotation(location: start, title: "START")
         addAnnotation(location: end, title: "END")
     }
-    
     
     func drawRoadDirections(startingLoc: CLLocationCoordinate2D,destinationLoc: CLLocationCoordinate2D){
         
@@ -80,3 +78,4 @@ extension DirectionsViewController: MKMapViewDelegate{
         return render
     }
 }
+

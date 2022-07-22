@@ -21,7 +21,23 @@ struct TripService{
     }
     
     static func fetchTrips(completion: @escaping ([Trip]) -> ()){
-        
+        var trips: [Trip] = []
+        Firestore.firestore().collection("trips").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else {return}
+            documents.forEach { document in
+                let dic = document.data()
+                let startLong = dic["startLongitude"] as? Double ?? 0.0
+                let startLat = dic["startLatitude"] as? Double ?? 0.0
+                let endLong = dic["endLongitude"] as? Double ?? 0.0
+                let endLat = dic["endLatitude"] as? Double ?? 0.0
+
+                let trip = Trip(start: Location(longitude: startLong,latitude: startLat)
+                                , end: Location(longitude: endLong, latitude: endLat))
+                
+                trips.append(trip)
+            }
+            completion(trips)
+        }
     }
     
 }
