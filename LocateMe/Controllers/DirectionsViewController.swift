@@ -10,7 +10,7 @@ import MapKit
 
 class DirectionsViewController: UIViewController {
 
-    @IBOutlet private(set) weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     
     var trip: Trip?
         
@@ -25,7 +25,7 @@ class DirectionsViewController: UIViewController {
         addAnnotation(location: end, title: "END")
     }
     
-    func drawRoadDirections(startingLoc: CLLocationCoordinate2D,destinationLoc: CLLocationCoordinate2D){
+    func drawRoadDirections(startingLoc: CLLocationCoordinate2D ,destinationLoc: CLLocationCoordinate2D){
         
         let startPlace = MKPlacemark(coordinate: startingLoc)
         let destinationPlace = MKPlacemark(coordinate: destinationLoc)
@@ -54,7 +54,7 @@ class DirectionsViewController: UIViewController {
     }
     
     
-    func setStartingLocation(location: CLLocationCoordinate2D,distance: CLLocationDistance){
+    func setStartingLocation(location: CLLocationCoordinate2D ,distance: CLLocationDistance){
         let region = MKCoordinateRegion(center: location, latitudinalMeters: distance, longitudinalMeters: distance)
         mapView.setRegion(region, animated: true)
     }

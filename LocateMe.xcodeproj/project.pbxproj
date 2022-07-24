@@ -15,9 +15,10 @@
 		85232363287DC01E00ED82EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85232361287DC01E00ED82EA /* LaunchScreen.storyboard */; };
 		85A2E64A288403A500F77482 /* MyLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2E649288403A500F77482 /* MyLocationVC.swift */; };
 		85A2E64C28853C2000F77482 /* UIViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */; };
+		85BDD821288D50490023F4F7 /* DirectionsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDD820288D50490023F4F7 /* DirectionsViewControllerTests.swift */; };
 		85C46FD02886502D007AB88A /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FCF2886502D007AB88A /* TripsTableViewController.swift */; };
 		85C46FD22886BA06007AB88A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FD12886BA06007AB88A /* Trip.swift */; };
-		85C46FDB2886E656007AB88A /* LocateMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FDA2886E656007AB88A /* LocateMeTests.swift */; };
+		85C46FDB2886E656007AB88A /* TripServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46FDA2886E656007AB88A /* TripServiceTests.swift */; };
 		85C46FE22887DDB7007AB88A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85C46FE12887DDB7007AB88A /* GoogleService-Info.plist */; };
 		85C46FE52887DF95007AB88A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 85C46FE42887DF95007AB88A /* FirebaseDatabase */; };
 		85C46FE72887DF95007AB88A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 85C46FE62887DF95007AB88A /* FirebaseFirestore */; };
@@ -46,10 +47,11 @@
 		85232364287DC01E00ED82EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85A2E649288403A500F77482 /* MyLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationVC.swift; sourceTree = "<group>"; };
 		85A2E64B28853C2000F77482 /* UIViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extention.swift"; sourceTree = "<group>"; };
+		85BDD820288D50490023F4F7 /* DirectionsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewControllerTests.swift; sourceTree = "<group>"; };
 		85C46FCF2886502D007AB88A /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		85C46FD12886BA06007AB88A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		85C46FD82886E656007AB88A /* LocateMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocateMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		85C46FDA2886E656007AB88A /* LocateMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateMeTests.swift; sourceTree = "<group>"; };
+		85C46FDA2886E656007AB88A /* TripServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripServiceTests.swift; sourceTree = "<group>"; };
 		85C46FE12887DDB7007AB88A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85C46FEB2887E49E007AB88A /* TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,15 @@
 			path = LocateMe;
 			sourceTree = "<group>";
 		};
+		85AC0FE1288D2F0000E50691 /* TripsServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				85C46FDA2886E656007AB88A /* TripServiceTests.swift */,
+				85BDD820288D50490023F4F7 /* DirectionsViewControllerTests.swift */,
+			);
+			path = TripsServiceTests;
+			sourceTree = "<group>";
+		};
 		85C46FCB28864F7E007AB88A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +167,7 @@
 		85C46FD92886E656007AB88A /* LocateMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				85C46FDA2886E656007AB88A /* LocateMeTests.swift */,
+				85AC0FE1288D2F0000E50691 /* TripsServiceTests */,
 			);
 			path = LocateMeTests;
 			sourceTree = "<group>";
@@ -294,7 +305,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85C46FDB2886E656007AB88A /* LocateMeTests.swift in Sources */,
+				85BDD821288D50490023F4F7 /* DirectionsViewControllerTests.swift in Sources */,
+				85C46FDB2886E656007AB88A /* TripServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

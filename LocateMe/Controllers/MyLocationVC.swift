@@ -124,14 +124,13 @@ extension MyLocationVC{
         let endTrip = Location(longitude: trackArray.last!.coordinate.longitude, latitude: trackArray.last!.coordinate.latitude)
         let trip = Trip(start: startTrip!, end: endTrip, timeStamp: Timestamp(date: .now))
         uploadTripToFirebase(trip: trip)
-//        delegate?.addTrip(trip: trip)
                 
         trackArray.removeAll()
         locationManager.startUpdatingLocation()
     }
     
     func uploadTripToFirebase(trip: Trip){
-        TripService.uploadTrip(trip: trip) { error in
+        TripService.shared.uploadTrip(trip: trip) { error in
             if let error = error {
                 print("Error on upload trip: \(error.localizedDescription)")
             }

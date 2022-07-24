@@ -24,7 +24,6 @@ class TripsTableViewController: UITableViewController {
     
     @IBAction func addTripNavigator(_ sender: Any) {
         let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "mapVC") as! MyLocationVC
-//        mapVC.delegate = self
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
@@ -34,7 +33,7 @@ class TripsTableViewController: UITableViewController {
 
 extension TripsTableViewController {
     func fetchTrips(){
-        TripService.fetchTrips { trips in
+        TripService.shared.fetchTrips { trips in
             self.trips = trips
             self.tableView.reloadData()
         }

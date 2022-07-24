@@ -8,10 +8,17 @@
 import Foundation
 import Firebase
 
+protocol tripServiceProtocol{
+    func uploadTrip(trip: Trip,completion: @escaping (Error?)-> Void)
+    func fetchTrips(completion: @escaping ([Trip])-> ())
+}
 
-struct TripService{
+
+struct TripService: tripServiceProtocol{
     
-    static func uploadTrip(trip: Trip,completion: @escaping (Error?) -> Void){
+    static let shared = TripService()
+    
+    func uploadTrip(trip: Trip,completion: @escaping (Error?) -> Void){
         let tripData = ["startLongitude": trip.start.longitude,
                         "startLatitude": trip.start.latitude,
                         "endLongitude": trip.end.longitude,
@@ -21,7 +28,7 @@ struct TripService{
         Firestore.firestore().collection("trips").addDocument(data: tripData, completion: completion)
     }
     
-    static func fetchTrips(completion: @escaping ([Trip]) -> ()){
+    func fetchTrips(completion: @escaping ([Trip]) -> ()){
         var trips: [Trip] = []
         Firestore.firestore().collection("trips").order(by: "timestamp").getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else {return}
